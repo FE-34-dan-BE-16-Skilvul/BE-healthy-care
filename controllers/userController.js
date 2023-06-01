@@ -6,7 +6,11 @@ const { users } = require("../models/index");
 const userController = {
   registerUser: async (req, res) => {
     try {
-      const { name, email, password } = req.body;
+      // const { name, email, password } = req.body;
+
+      const email = req.body.email;
+      const password = req.body.password;
+      const name = req.body.name;
 
       if (!(name && email && password)) {
         return res.status(400).json({
