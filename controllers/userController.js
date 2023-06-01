@@ -8,7 +8,7 @@ const userController = {
     try {
       const { name, email, password } = req.body;
 
-      if (!name || !email || !password) {
+      if (!(name && email && password)) {
         return res.status(400).json({
           message: "Please, fill all input!",
         });
