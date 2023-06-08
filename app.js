@@ -1,12 +1,14 @@
 require('dotenv').config();
-const Sequelize = require('sequelize');
+const router = require("./routes");
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const cors = require('cors');
+const bmiRouter = require('./routes/bmiRouter');
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+// const indexRouter = require('./routes/index');
+// const usersRouter = require('./routes/users');
 
 const app = express();
 
@@ -16,31 +18,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use(cors());
+app.use(router);
 
-// Mengambil konfigurasi koneksi database dari file .env
-const { DB_NAME, DB_USERNAME, DB_PASSWORD, DB_HOSTNAME, DB_DIALECT } = process.env;
+// app.use('/', indexRouter);
+// app.use('/users', usersRouter);
 
-// Konfigurasi koneksi ke database
-const sequelize = new Sequelize(DB_NAME, DB_USERNAME, DB_PASSWORD, {
-    host: DB_HOSTNAME,
-    dialect: DB_DIALECT,
+const port = 3000; // Port yang ingin Anda gunakan
+
+app.listen(port, () => {
+    console.log(`Server berjalan di port ${port}`);
 });
-
-// Fungsi untuk menguji koneksi ke database
-async function testDatabaseConnection() {
-    try {
-        // Coba terhubung ke database
-        await sequelize.authenticate();
-        console.log('Koneksi ke database berhasil.');
-
-    } catch (error) {
-        console.error('Koneksi ke database gagal:', error);
-    }
-}
-
-// Jalankan fungsi untuk menguji koneksi ke database
-testDatabaseConnection();
 
 module.exports = app;
