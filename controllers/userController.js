@@ -12,6 +12,8 @@ const userController = {
       const password = req.body.password;
       const name = req.body.name;
 
+
+
       if (!(name && email && password)) {
         return res.status(400).json({
           message: "Please, fill all input!",

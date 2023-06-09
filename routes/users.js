@@ -7,7 +7,6 @@ const userRouter = express.Router();
 userRouter.get("/", function (req, res, next) {
   res.send(process.env.APP_NAME);
 });
-
 userRouter.post("/users/register", userController.registerUser);
 userRouter.post("/users/login", userController.loginUser);
 

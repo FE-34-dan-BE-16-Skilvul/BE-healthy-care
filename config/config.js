@@ -1,4 +1,5 @@
 require('dotenv').config();
+const mysql = require('mysql2');
 
 const {
   DB_USERNAME,
@@ -31,3 +32,20 @@ module.exports = {
     "dialect": DB_DIALECT
   }
 }
+
+// Konfigurasi koneksi
+const connection = mysql.createConnection({
+  host: DB_HOSTNAME,
+  user: DB_USERNAME,
+  password: DB_PASSWORD,
+  database: DB_NAME
+});
+
+// Menguji koneksi
+connection.connect((error) => {
+  if (error) {
+    console.error('Koneksi database gagal:', error);
+  } else {
+    console.log('Koneksi database berhasil!');
+  }
+});
