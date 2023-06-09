@@ -5,24 +5,35 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("users", {
+    return queryInterface.createTable("foods", {
       id: {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
         allowNull: false,
       },
+      category_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "categories",
+          key: "id",
+        },
+      },
       name: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      email: {
+      img: {
         type: Sequelize.STRING,
-        unique: true,
         allowNull: false,
       },
-      password: {
-        type: Sequelize.STRING,
+      calory: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      nutrition: {
+        type: Sequelize.TEXT,
         allowNull: false,
       },
       createdAt: {
@@ -36,6 +47,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("users");
+    return queryInterface.dropTable("foods");
   },
 };
