@@ -1,5 +1,7 @@
 const { foods, categories } = require("../models/index");
 
+foods.belongsTo(categories, { foreignKey: "category_id" });
+
 const foodController = {
   getAllFoods: async (req, res) => {
     try {
@@ -15,11 +17,12 @@ const foodController = {
 
       const result = allFoods.map((food) => {
         return {
+          id: food.id,
+          category_name: food.category.name,
           name: food.name,
           img: food.img,
           calory: food.calory,
           nutrition: food.nutrition,
-          category_name: food.category.name,
         };
       });
 
@@ -29,6 +32,7 @@ const foodController = {
         data: result,
       });
     } catch (error) {
+      console.error(error);
       return res.status(500).json({
         message: "Server error!",
         error,
@@ -39,20 +43,29 @@ const foodController = {
     try {
       const idParams = req.params.id;
 
-      const food = await foods.findOne({
-        where: { id: idParams },
+      const detailFood = await foods.findByPk(idParams, {
+        include: [categories],
       });
 
-      if (!food) {
+      if (!detailFood) {
         return res.status(404).json({
           message: "Data not found!",
         });
       }
 
+      const result = {
+        id: detailFood.id,
+        category_name: detailFood.category.name,
+        name: detailFood.name,
+        img: detailFood.img,
+        calory: detailFood.calory,
+        nutrition: detailFood.nutrition,
+      };
+
       return res.json({
         status: 200,
         message: "success",
-        data: food,
+        data: result,
       });
     } catch (error) {
       return res.status(500).json({
