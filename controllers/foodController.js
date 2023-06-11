@@ -1,9 +1,15 @@
-const { foods } = require("../models/index");
+const { foods, categories } = require("../models/index");
 
 const foodController = {
   getAllFoods: async (req, res) => {
     try {
       const allFoods = await foods.findAll();
+
+      if (!allFoods) {
+        return res.status(404).json({
+          message: "Data not found!",
+        });
+      }
 
       return res.json({
         status: 200,
@@ -21,7 +27,7 @@ const foodController = {
     try {
       const idParams = req.params.id;
 
-      const food = foods.findOne({
+      const food = await foods.findOne({
         where: { id: idParams },
       });
 
