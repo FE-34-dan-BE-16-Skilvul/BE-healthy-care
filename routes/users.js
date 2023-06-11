@@ -9,5 +9,7 @@ userRouter.get("/", function (req, res, next) {
 });
 userRouter.post("/users/register", userController.registerUser);
 userRouter.post("/users/login", userController.loginUser);
+userRouter.get("/users/:id", userController.getUser);
+
 
 module.exports = userRouter;
