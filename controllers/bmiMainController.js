@@ -56,7 +56,7 @@ const bmiMainController = {
         try {
             const { id } = req.params;
             await Bmi.destroy({
-                where: { user_id: id }
+                where: { id: id }
             });
 
             return res.status(200).json({
