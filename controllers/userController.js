@@ -13,8 +13,6 @@ const userController = {
       const password = req.body.password;
       const name = req.body.name;
 
-
-
       if (!(name && email && password)) {
         return res.status(400).json({
           message: "Please, fill all input!",
@@ -102,13 +100,12 @@ const userController = {
         id: isUser.id,
         name: isUser.name,
         email: isUser.email,
-        token: token
-      }
+        token: token,
+      };
 
       return res.status(200).json({
         message: "Berhasil Login!",
         result,
-
       });
     } catch (error) {
       return res.status(500).json({
@@ -132,9 +129,8 @@ const userController = {
 
       const result = {
         name: getUser.name,
-        email: getUser.email
-      }
-
+        email: getUser.email,
+      };
 
       return res.json({
         status: 200,
