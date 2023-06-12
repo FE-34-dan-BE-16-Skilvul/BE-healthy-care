@@ -98,9 +98,17 @@ const userController = {
         id: isUser.id,
       });
 
+      const result = {
+        id: isUser.id,
+        name: isUser.name,
+        email: isUser.email,
+        token: token
+      }
+
       return res.status(200).json({
         message: "Berhasil Login!",
-        token,
+        result,
+
       });
     } catch (error) {
       return res.status(500).json({
