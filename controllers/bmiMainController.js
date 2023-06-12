@@ -50,6 +50,25 @@ const bmiMainController = {
                 error,
             });
         }
+    },
+
+    deleteBmi: async (req, res) => {
+        try {
+            const { id } = req.params;
+            await Bmi.destroy({
+                where: { user_id: id }
+            });
+
+            return res.status(200).json({
+                status: 200,
+                message: "Data dihapus!"
+            });
+        } catch (error) {
+            return res.status(500).json({
+                message: "Terjadi kesalahan server!",
+                error,
+            });
+        }
     }
 };
 
