@@ -477,7 +477,7 @@ By: BE-16 (Alvian Nugroho & Arisandi Satria Jeujanan)
 
   - Error: `404 NOT FOUND` || `500 INTERNAL SERVER ERROR`
 
-    If the server get an error `404 NOT FOUND`:
+    If data not found `404 NOT FOUND`:
 
     ```json
     {
@@ -518,7 +518,7 @@ By: BE-16 (Alvian Nugroho & Arisandi Satria Jeujanan)
 
   - Error: `404 NOT FOUND` || `500 INTERNAL SERVER ERROR`
 
-    If the server get an error `404 NOT FOUND`:
+    If data not found `404 NOT FOUND`:
 
     ```json
     {
