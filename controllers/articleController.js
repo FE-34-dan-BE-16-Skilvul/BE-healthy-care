@@ -4,7 +4,7 @@ const { Articles } = require("../models/index");
 const articleController = {
   getAllArticle: async (req, res) => {
     try {
-      const allArticles = await Articles.findAll({ attributes: ['title', 'content', 'author', 'image', 'menu_diet', 'published'] });
+      const allArticles = await Articles.findAll({ attributes: ['id', 'title', 'content', 'author', 'image', 'menu_diet', 'published'] });
 
       if (!allArticles) {
         return res.status(404).json({
