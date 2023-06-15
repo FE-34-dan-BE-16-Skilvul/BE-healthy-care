@@ -3,13 +3,9 @@ const userController = require("../controllers/userController");
 const authMiddleware = require("../middleware/auth");
 const userRouter = express.Router();
 
-/* GET users listing. */
-userRouter.get("/", function (req, res, next) {
-  res.send(process.env.APP_NAME);
-});
+userRouter.use(authMiddleware);
+
 userRouter.post("/users/register", userController.registerUser);
 userRouter.post("/users/login", userController.loginUser);
-userRouter.get("/users/:id", userController.getUser);
-
 
 module.exports = userRouter;
