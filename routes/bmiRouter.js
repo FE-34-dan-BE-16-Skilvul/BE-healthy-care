@@ -3,7 +3,7 @@ const bmiController = require("../controllers/bmiMainController");
 const authMiddleware = require("../middleware/auth");
 const bmiRouter = express.Router();
 
-bmiRouter.use(authMiddleware);
+// bmiRouter.use(authMiddleware);
 
 //id_user
 bmiRouter.post("/bmi/:id", bmiController.insertBmi);
