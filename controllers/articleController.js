@@ -30,7 +30,7 @@ const articleController = {
     try {
       const idParams = req.params.id;
 
-      const detailArticle = await Articles.findByPk(idParams, { attributes: ['title', 'content', 'author', 'image', 'menu_diet', 'published'] });
+      const detailArticle = await Articles.findByPk(idParams, { attributes: ['id', 'title', 'content', 'author', 'image', 'menu_diet', 'published'] });
 
       if (!detailArticle) {
         return res.status(404).json({
