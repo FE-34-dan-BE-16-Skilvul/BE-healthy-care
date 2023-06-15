@@ -118,36 +118,6 @@ const userController = {
     }
   },
 
-  getUser: async (req, res) => {
-    try {
-      const id = req.params.id;
-
-      const getUser = await users.findOne({ where: { id: id } });
-
-      if (!getUser) {
-        return res.status(404).json({
-          message: "Data not found!",
-        });
-      }
-
-      const result = {
-        name: getUser.name,
-        email: getUser.email
-      }
-
-
-      return res.json({
-        status: 200,
-        message: "success",
-        data: result,
-      });
-    } catch (error) {
-      return res.status(500).json({
-        message: "Server error!",
-        error,
-      });
-    }
-  },
 };
 
 module.exports = userController;
