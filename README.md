@@ -1,3 +1,5 @@
+<!-- @format -->
+
 # **HealthyCare RESTful API - Skilvul Final Project**
 
 By: BE-16 (Alvian Nugroho & Arisandi Satria Jeujanan)
@@ -296,7 +298,19 @@ By: BE-16 (Alvian Nugroho & Arisandi Satria Jeujanan)
 - Body:
 
   ```json
-  {}
+  {
+    "status_id": "integer",
+    "result": "integer"
+  }
+  ```
+
+  Example:
+
+  ```json
+  {
+    "status_id": 2,
+    "result": 30
+  }
   ```
 
 - Response:
@@ -341,7 +355,18 @@ By: BE-16 (Alvian Nugroho & Arisandi Satria Jeujanan)
     {
       "status": 200,
       "message": "Data berhasil ditampilkan!",
-      "data": {}
+      "data": {
+          "id": 8,
+          "user_id": 2,
+          "status_id": 2,
+          "result": 30,
+          "createdAt": "2023-06-08T08:42:54.000Z",
+          "updatedAt": "2023-06-08T08:42:54.000Z",
+          "BmiStatus": {
+            "id": 2,
+            "name": "normal",
+            "description": "qhuiheuwewd"
+          }
     }
     ```
 
@@ -387,74 +412,7 @@ By: BE-16 (Alvian Nugroho & Arisandi Satria Jeujanan)
     }
     ```
 
-### 8. **Insert Daily Calory**
-
-- Endpoint: `/daily/:id`
-- Method: `POST`
-- Auth: NO
-- Body:
-
-  ```json
-  {}
-  ```
-
-- Response:
-
-  - Success: `201 CREATED`
-
-    Example:
-
-    ```json
-    {
-      "status": 201,
-      "message": "Data berhasil ditambahkan!",
-      "data": {}
-    }
-    ```
-
-  - Error: `500 INTERNAL SERVER ERROR`
-
-    If the server get an error `500 INTERNAL SERVER ERROR`:
-
-    ```json
-    {
-      "message": "Terjadi kesalahan server!",
-      "error": <error message>
-    }
-    ```
-
-### 9. **Get Daily Calory**
-
-- Endpoint: `/daily/:id`
-- Method: `GET`
-- Auth: NO
-- Body: -
-
-- Response:
-
-  - Success: `200 OK`
-
-    Example:
-
-    ```json
-    {
-      "status": 200,
-      "message": "Data berhasil ditampilkan!"
-    }
-    ```
-
-  - Error: `500 INTERNAL SERVER ERROR`
-
-    If the server get an error `500 INTERNAL SERVER ERROR`:
-
-    ```json
-    {
-      "message": "Terjadi kesalahan server!",
-      "error": <error message>
-    }
-    ```
-
-### 10. **Get All Article**
+### 8. **Get All Article**
 
 - Endpoint: `/articles`
 - Method: `GET`
@@ -495,7 +453,7 @@ By: BE-16 (Alvian Nugroho & Arisandi Satria Jeujanan)
     }
     ```
 
-### 11. **Get Detail Article**
+### 9. **Get Detail Article**
 
 - Endpoint: `/articles/:id`
 - Method: `GET`
