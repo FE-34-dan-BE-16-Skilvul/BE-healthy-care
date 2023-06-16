@@ -13,7 +13,6 @@ router.get("/", function (req, res, next) {
 
 router.use(userRouter);
 router.use(bmiRouter);
-router.use(dailyRouter);
 router.use(foodRouter);
 router.use(articleRouter);
 
