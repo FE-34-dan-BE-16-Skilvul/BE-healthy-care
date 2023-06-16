@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const userRouter = require("./users");
 const bmiRouter = require("./bmiRouter");
-const dailyRouter = require("./dailyRouter");
 const foodRouter = require("./foods");
 const articleRouter = require("./article");
 
